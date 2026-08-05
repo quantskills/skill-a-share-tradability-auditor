@@ -1,0 +1,32 @@
+---
+description: Use the A-Share Tradability Auditor skill when the request matches its SKILL.md description.
+alwaysApply: false
+---
+
+# A-Share Tradability Auditor Skill
+
+When the user asks whether a backtest's fills were actually achievable — 涨停买不进、
+跌停卖不出、一字板、停牌调仓、T+1、裸卖空、次新股、参与率、可交易性/可成交性审计,
+或者"实盘为什么跑不出回测的收益" — use the local skill package.
+
+Preferred local project path:
+
+```text
+.cursor/skills/a-share-tradability-auditor
+```
+
+Workflow:
+
+1. Read `.cursor/skills/a-share-tradability-auditor/SKILL.md`.
+2. Load files under `references/` only when the workflow or task requires them
+   (`limit-rules.md` for board/band logic, `methodology.md` for thresholds,
+   `output-schema.md` for the report, `data-map.md` for fetching, `boundary.md` for routing).
+3. Run bundled scripts from the skill root exactly as documented:
+   `build_tradability_panel.py` → `audit_trades.py` → `validate_audit.py`.
+4. Preserve the input contract, price-limit rules, state definitions, the four-layer
+   fill model (`min` of inventory / market / participation), validation limits and
+   risk boundaries.
+5. Require unadjusted prices; never compute limits on an adjusted series.
+6. Do not invent trade logs, bar data, credentials, limit prices or audit results.
+7. Do not run backtests, place orders or modify source data — audit only, output to
+   new files, no investment advice.

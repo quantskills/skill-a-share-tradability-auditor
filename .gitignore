@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.ipynb_checkpoints/
+
+# audit artifacts — never commit user trade logs or holdings
+bars.csv
+bars.parquet
+trades.csv
+panel.csv
+panel.parquet
+ledger.csv
+audit.json
+p_*.csv
+a_*.json
+*.local.*

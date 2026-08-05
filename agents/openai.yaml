@@ -1,0 +1,6 @@
+name: a-share-tradability-auditor
+entrypoint: SKILL.md
+interface:
+  display_name: "A-Share Tradability Auditor"
+  short_description: "审计回测交易流的 A 股可交易性约束，把账面收益拆成可成交收益与幽灵收益"
+  default_prompt: "Use $a-share-tradability-auditor to replay my backtest trade log against A-share price limits, suspensions, T+1 and participation caps, and report how much of the headline PnL is not executable."
